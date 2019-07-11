@@ -1,0 +1,9 @@
+* {
+	box-sizing: border-box;
+}
+
+input[type='text'], input[type='email'], input[type='password'], textarea {
+	outline: none;
+}
+
+@import 'utilities/container'
