@@ -1,32 +1,109 @@
-# React Laravel Boilerplate
+# TestMe (with Laravel backend)
 
-[![Build Status](https://travis-ci.org/huwcarwyn/react-laravel-boilerplate.svg?branch=master)](https://travis-ci.org/huwcarwyn/react-laravel-boilerplate)
+## About the project
 
-This is the boilerplate that I personally use for getting projects off the ground quickly using my favourite stack of technologies. It uses Laravel as a backend API service, and has a React single page application in the front end.
+Simple a-b-c-d question-answer application. I created it to study some cool React mechanisms, and also to make an easy and enjoyable way of studying. 
 
-## Features
-- Laravel Passport API authentication
-- Route level code splitting using React Lazy/Suspense
-- Login/signup functionality implemented and tested
-- Webpack configuration for development and production
-- React/Redux single page application using React Router
-- Some basic components already built in resources/assets/js/components
-- Simple form building using [Redux Form](https://redux-form.com/7.2.0/ "Redux Form")
-- Component library and interactive component building via [Storybook](https://storybook.js.org/ "Storybook")
-- Hot module reloading for your React components using Webpack Dev Server and [React Hot Module Reloader](https://gaearon.github.io/react-hot-loader/ "React Hot Module Reloader")
-- Tailwind CSS for utility class styling (see [https://tailwindcss.com](https://tailwindcss.com))
-- Support for scoped styling using React CSS modules using  [Gajus React CSS Modules](https://github.com/gajus/react-css-modules "Gajus React CSS Modules")
-- Continous build integration via [Travis CI](https://travis-ci.org/ "Travis CI")
-- Automatic code style fixing with [Prettier](https://prettier.io/) 
+## What is special about it?
 
-## Installation
-I personally use Vagrant and [Homestead](https://laravel.com/docs/5.5/homestead "Homestead"), so these installation instructions assume that you use Homestead as well, but the project's dependencies are very similar to the base Laravel installation, so if you use something else to develop locally, the instructions shouldn't change too much.
+There is an interesting feature- if you make a mistake in two or more questions, they will be repeated to you depending on a pattern:
 
-- Clone the repository using `git clone https://github.com/huwcarwyn/react-laravel-boilerplate`
-- Fill out a .env file in the project root using the .env.example file as a template
-- Install composer dependencies using `composer install`
-- Run `php artisan key:generate` `php artisan migrate` `php artisan passport:install` and `php artisan storage:link`
-- Install NPM dependencies using `npm install`
-- Make sure to create two databases, one main and one for running the tests, then run `php artisan migrate`
-- If you want to use the webpack dev server, make sure that the proxy entry in the weback.dev.js points to the server that's running your Laravel installation.
+                        probability = (1 - correct_answers/appearances) * 100%
+ 
+where correct_answers/appearances ratio of 1 is 0% chance of getting the question, and ratio of 3/10 would be 70% chance.
 
+What is really important about the TestMe is the fact, that you can import your own test from .txt file! The pattern of the .txt file should be as follows:
+
+```
+question
+answer a
+answer b
+answer c
+answer d
+```
+
+To specify the correct answers, all you need to do is to put the `+` character as the first char in line of an answer. To make it clear, as an example, if we want to specify that `1.c` and `2.a` are the correct answers, file contents should look like this:
+
+```
+question 1
+answer a
+answer b
++answer c
+answer d
+question 2
++answer a
+answer b
+answer c
+answer d
+```
+
+## Launching and boilerplate
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
