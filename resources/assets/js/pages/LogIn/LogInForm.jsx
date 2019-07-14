@@ -6,6 +6,10 @@ import { PasswordFormLine, TextFormLine, NeutralButton } from 'components'
 import { email as emailRegex } from 'constants/regexes'
 import { linkStyle } from 'constants/styles'
 
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
+import styled from 'styled-components'
+
 const validateLogin = values => {
   let errors = {}
 
@@ -22,34 +26,80 @@ const validateLogin = values => {
   return errors
 }
 
+const ButtonsContainer = styled.div`
+  margin-top: 30px;
+  display: flex;
+`
+const ButtonWrapper = styled.div`
+  margin-right: 30px;
+`
+const CenterWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+`
+
+const renderTextField = ({
+  input,
+  meta: { touched, error },
+  ...custom
+}) => (
+  <TextField
+    {...input}
+    {...custom}
+  />
+)
+
 const LoginForm = props => {
   const { handleSubmit } = props
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Field
-        component={TextFormLine}
-        type="text"
-        name="email"
-        labelText="Email"
-      />
-      <Field
-        component={PasswordFormLine}
-        type="password"
-        name="password"
-        labelText="Password"
-      />
+    <form onSubmit={handleSubmit} className="form form--login">
+      <div>
+        <Field
+          name="email"
+          component={renderTextField}
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="email"
+          label="Email"
+          name="email"
+        />
+      </div>
+
+      <div>
+        <Field
+          name="password"
+          component={renderTextField}
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="password"
+          label="Password"
+          name="password"
+        />
+      </div>
       <div className="flex items-center">
-        <Link className={linkStyle} to="/signup">
-          Or Signup
-        </Link>
-        <span className="inline-block px-2">|</span>
-        <Link className={linkStyle} to="/forgot-password">
-          Forgot Password?
-        </Link>
-        <NeutralButton className="ml-auto" type="submit">
-          Log In
-        </NeutralButton>
+        <CenterWrapper>
+          <ButtonWrapper>
+            <Button variant="contained" color="primary" type="submit">
+              Log In
+            </Button>
+          </ButtonWrapper>
+          <ButtonsContainer>
+            <ButtonWrapper>
+              <Button variant="outlined" href="/signup">
+              Or Signup
+              </Button>
+            </ButtonWrapper>
+            <Button variant="outlined" href="/forgot-password">
+              Forgot Password?
+            </Button>
+          </ButtonsContainer>
+        </CenterWrapper>
       </div>
     </form>
   )

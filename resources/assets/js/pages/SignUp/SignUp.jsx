@@ -3,13 +3,17 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { SubmissionError } from 'redux-form'
-
 import SignUpForm from './SignUpForm'
+import Container from '@material-ui/core/Container'
 
 export const SignUpComponent = props => {
   const { submitSignup } = props
 
-  return <SignUpForm onSubmit={submitSignup} />
+  return (
+    <Container component="main" maxWidth="xs">
+      <SignUpForm onSubmit={submitSignup}/>
+    </Container>
+  )
 }
 
 const parseValidationErrorResponse = response => {

@@ -1,14 +1,19 @@
 import React from 'react'
-import { Link as RouterLink } from 'react-router-dom'
 import { reduxForm, Field } from 'redux-form'
 
-import { PasswordFormLine, TextFormLine, NeutralButton } from 'components'
 import { email as emailRegex } from 'constants/regexes'
-import { linkStyle } from 'constants/styles'
 
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
-import Link from '@material-ui/core/Link'
+import styled from 'styled-components'
+
+const ButtonsContainer = styled.div`
+  margin-top: 30px;
+  display: flex;
+`
+const ButtonWrapper = styled.div`
+  margin-right: 30px;
+`
 
 const validateSignUp = values => {
   let errors = {}
@@ -108,15 +113,16 @@ const SignUpForm = props => {
         />
       </div>
 
-      <div className="flex items-center">
+      <ButtonsContainer>
+        <ButtonWrapper>
+          <Button variant="contained" color="primary" type="submit">
+            Sign In
+          </Button>
+        </ButtonWrapper>
         <Button href="/login">
           Or Login
         </Button>
-        
-        <Button variant="contained" color="primary" type="submit">
-          Sign In
-        </Button>
-      </div>
+      </ButtonsContainer>
     </form>
   )
 }

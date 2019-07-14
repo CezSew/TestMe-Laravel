@@ -55,7 +55,7 @@ export const App = props => (
               exact
               path="/login"
               render={() => (
-                <FormPageLayout title="Log In">
+                <FormPageLayout>
                   <LogIn />
                 </FormPageLayout>
               )}
