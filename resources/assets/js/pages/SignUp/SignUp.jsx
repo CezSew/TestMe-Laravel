@@ -24,6 +24,7 @@ const parseValidationErrorResponse = response => {
 
 const mapDispatchToProps = dispatch => ({
   submitSignup: signUpData => {
+    console.log(signUpData)
     return axios
       .post('/api/signup', signUpData)
       .then(response => {

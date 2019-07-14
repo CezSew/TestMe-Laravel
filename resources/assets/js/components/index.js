@@ -9,7 +9,8 @@ export {
   FormLine,
   PasswordFormLine,
   TextFormLine,
-  TextAreaFormLine
+  TextAreaFormLine,
+  EmailFormLine
 } from './Forms/FormLine'
 export * from './Icons'
 export { PasswordInput, TextArea, TextInput } from './Forms/Inputs'

@@ -1,10 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import { reduxForm, Field } from 'redux-form'
 
 import { PasswordFormLine, TextFormLine, NeutralButton } from 'components'
 import { email as emailRegex } from 'constants/regexes'
 import { linkStyle } from 'constants/styles'
+
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
+import Link from '@material-ui/core/Link'
 
 const validateSignUp = values => {
   let errors = {}
@@ -33,39 +37,85 @@ const validateSignUp = values => {
 const SignUpForm = props => {
   const { handleSubmit } = props
 
+  const renderTextField = ({
+    input,
+    meta: { touched, error },
+    ...custom
+  }) => (
+    <TextField
+      {...input}
+      {...custom}
+    />
+  )
+
   return (
     <form onSubmit={handleSubmit}>
-      <Field
-        component={TextFormLine}
-        type="text"
-        name="first_name"
-        labelText="First Name"
-      />
-      <Field
-        component={TextFormLine}
-        type="text"
-        name="last_name"
-        labelText="Last Name"
-      />
-      <Field
-        component={TextFormLine}
-        type="text"
-        name="email"
-        labelText="Email"
-      />
-      <Field
-        component={PasswordFormLine}
-        type="password"
-        name="password"
-        labelText="Password"
-      />
+
+      <div>
+        <Field
+          name="first_name"
+          component={renderTextField}
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="first_name"
+          label="First Name"
+          name="first_name"
+          autoFocus
+        />
+      </div>
+
+      <div>
+        <Field
+          name="last_name"
+          component={renderTextField}
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="last_name"
+          label="Last Name"
+          name="last_name"
+        />
+      </div>
+
+      <div>
+        <Field
+          name="email"
+          component={renderTextField}
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="email"
+          label="Email"
+          name="email"
+        />
+      </div>
+
+      <div>
+        <Field
+          name="password"
+          component={renderTextField}
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="password"
+          label="Password"
+          name="password"
+        />
+      </div>
+
       <div className="flex items-center">
-        <Link className={linkStyle} to="/login">
+        <Button href="/login">
           Or Login
-        </Link>
-        <NeutralButton className="ml-auto" type="submit">
-          Sign Up
-        </NeutralButton>
+        </Button>
+        
+        <Button variant="contained" color="primary" type="submit">
+          Sign In
+        </Button>
       </div>
     </form>
   )
