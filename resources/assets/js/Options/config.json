@@ -7,7 +7,7 @@
         },
         "1": {
             "name":"js_test",
-            "imageURL": "img/lis.jpg",
+            "imageURL": "/img/lis.jpg",
             "imageAlt": ""
         }
     }

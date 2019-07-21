@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const Answers = ({handleAnswer, state, utils}) => {
     const handleClick = (index, that) => {
@@ -36,11 +36,10 @@ const Answers = ({handleAnswer, state, utils}) => {
     )
 }
 
-Answers.propTypes = {
-    state: PropTypes.object.isRequired,
-    handleAnswer: PropTypes.func.isRequired,
-    utils: PropTypes.object.isRequired
-};
-
+// Answers.propTypes = {
+//     state: PropTypes.object.isRequired,
+//     handleAnswer: PropTypes.func.isRequired,
+//     utils: PropTypes.object.isRequired
+// };
 
 export default Answers;
