@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Provider } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter, Link } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 
 import { DashboardLayout, FormPageLayout } from 'layouts';
@@ -11,7 +11,6 @@ import Choose from './components/Choose/Choose';
 import Load from './components/Load/Load';
 
 import * as utils from 'utils/index';
-import { Link } from 'react-router-dom';
 
 import {
     AuthGuard,
@@ -47,7 +46,7 @@ const Loading = () => (
 const OverviewWithDashboard = withDashboard(Overview);
 const SettingsWithDashboard = withDashboard(SettingsRoutes);
 
-export class App extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
 
@@ -125,7 +124,7 @@ export class App extends React.Component {
             stats: [],
             repeat: false
         }, function() {
-            this.props.history.push('/question');
+            browserHistory.push('/question');
         });
     }
 
@@ -201,7 +200,15 @@ export class App extends React.Component {
                                     exact
                                     path="/question"
                                     render={() => (
-                                        <Question />
+                                        <Question
+                                            state={this.state}
+                                            handleAnswer={this.handleAnswer}
+                                            generateNewTest={this.generateNewTest}
+                                            changeAppStep={this.changeAppStep}
+                                            prepareQuestion={this.prepareQuestion}
+                                            handleButtonClick={this.handleButtonClick}
+                                            utils={utils}
+                                        />
                                     )}
                                 />
 
@@ -241,3 +248,5 @@ export class App extends React.Component {
         );
     }
 }
+
+export default withRouter(App);

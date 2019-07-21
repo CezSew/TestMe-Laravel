@@ -1,37 +1,41 @@
-import React from 'react'
-import axios from 'axios'
-import { render } from 'react-dom'
-import { AppContainer } from 'react-hot-loader'
+import React from 'react';
+import axios from 'axios';
+import { render } from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
+import { BrowserRouter } from 'react-router-dom';
 
-import { App } from './app'
+import App from './app';
 
 /**
  * Import Axios Set-Up
  */
 
-let token = document.head.querySelector('meta[name="csrf-token"]')
+let token = document.head.querySelector('meta[name="csrf-token"]');
 
 axios.defaults.headers.common = {
-  'X-CSRF-TOKEN': token.content,
-  'X-Requested-With': 'XMLHttpRequest'
-}
+    'X-CSRF-TOKEN': token.content,
+    'X-Requested-With': 'XMLHttpRequest'
+};
 
 /**
  * Import the global styling here, override the webpack CSS loaders since we don't want
  * modules enabled here.
  */
-require('../styles/app.scss')
+require('../styles/app.scss');
 
 render(
-  <AppContainer warnings={false}>
-    <App />
-  </AppContainer>,
-  document.getElementById('app')
-)
+    <BrowserRouter>
+        <AppContainer warnings={false}>
+            <App />
+        </AppContainer>
+    </BrowserRouter>
+    ,
+    document.getElementById('app')
+);
 
 /**
  * Webpack Hot Module Replacement API
  */
 if (module.hot) {
-  module.hot.accept()
+    module.hot.accept();
 }

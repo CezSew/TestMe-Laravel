@@ -9,20 +9,20 @@ const Answers = ({handleAnswer, state, utils}) => {
         assignClassName(that, elClass);
         blockAnswers();
         handleAnswer(isAnswerCorrect);
-    }
+    };
     const showCorrect = (index) => {
         let elements = document.getElementsByClassName('question__answer');
         elements[index].classList.add('missed-correct');
-    }
+    };
     const blockAnswers = () => {
         let elements = document.getElementsByClassName('question__answer');
         Object.keys(elements).map((key)=> {
             return elements[key].disabled = true;
         });
-    }
+    };
     const assignClassName = (el, elClass) => {
         el.classList.add(elClass);
-    }
+    };
     let current = state.question.currentQuestionNumber;
     let question = state.question.data ? state.question.data[current] : {};
     let answers = question.answers;
