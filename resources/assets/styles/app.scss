@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+body {
+	font-family: 'Poppins', sans-serif;
+}
+
 input[type='text'], input[type='email'], input[type='password'], textarea {
 	outline: none;
 }
@@ -16,5 +22,8 @@ body, html {
 	}
 } 
 
+@import 'utilities/variables';
+@import 'utilities/reset';
 @import 'utilities/container';
-@import 'FormPage'
+@import 'FormPage';
+@import 'header';

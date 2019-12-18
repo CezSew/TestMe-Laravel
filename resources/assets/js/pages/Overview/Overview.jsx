@@ -1,15 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import { NeutralButton } from 'components'
 // import { ModalConsumer } from 'contexts'
-import SideMenu from '../../components/Menu/SideMenu';
+// import SideMenu from '../../components/Menu/SideMenu';
 
 const OverviewComponent = (props) => {
-    console.log(props.state.options)
-    console.log(props.generateNewTest)
     return (
         <main className="main">
-            <SideMenu changeAppStep = {props.changeAppStep} state = {props.state} handleChoosetest = {props.generateNewTest} />
+            <div className="container">
+                <div className="app">
+                    That's the main page!
+                </div>
+            </div>
+            {/* <SideMenu changeAppStep = {props.changeAppStep} state = {props.state} handleChoosetest = {props.generateNewTest} />
             <div className="container">
                 <div className="app">
                     <Link
@@ -31,7 +34,7 @@ const OverviewComponent = (props) => {
                         Wybierz test
                     </Link>
                 </div>
-            </div>
+            </div> */}
         </main>
     );
 };

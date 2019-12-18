@@ -1,0 +1,27 @@
+.header {
+    padding: 40px 0;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.header__menu {
+    display: flex;
+}
+
+.header__list-item {
+    margin-left: 20px;
+    &:first-of-type {
+        margin-left: 0;
+    }
+}
+
+.header__logo {
+    font-size: 3rem;
+    color: $purple;
+    &:hover {
+        text-decoration: none;
+    }
+}
