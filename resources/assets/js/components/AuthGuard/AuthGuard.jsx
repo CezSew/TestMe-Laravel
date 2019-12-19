@@ -52,23 +52,23 @@ const mapStateToProps = state => ({
     currentUserId: state.session.currentUser
 });
 
-const mapDispatchToProps = dispatch => ({
-    authOrRedirect: () => {
-        return dispatch(getCurrentUserInfo()).catch(() => {
-            console.log('User is not logged in!');
-            const currentUserLocation = window.location;
-            const host = window.location.protocol + '//' + window.location.host + '/';
-
-            // allow only root and login
-            if (currentUserLocation.toString() !== host.toString()) {
-                console.log(`Redirect from ${currentUserLocation} when host is ${host}`);
-                dispatch(replace('/login'));
-            }
-        });
-    }
-});
+// const mapDispatchToProps = dispatch => ({
+//     authOrRedirect: () => {
+//         return dispatch(getCurrentUserInfo()).catch(() => {
+//             console.log('User is not logged in!');
+//             const currentUserLocation = window.location;
+//             const host = window.location.protocol + '//' + window.location.host + '/';
+//
+//             // allow only root and login
+//             if (currentUserLocation.toString() !== host.toString()) {
+//                 console.log(`Redirect from ${currentUserLocation} when host is ${host}`);
+//                 dispatch(replace('/login'));
+//             }
+//         });
+//     }
+// });
 
 export const AuthGuard = connect(
     mapStateToProps,
-    mapDispatchToProps
+    // mapDispatchToProps
 )(AuthGuardComponent);

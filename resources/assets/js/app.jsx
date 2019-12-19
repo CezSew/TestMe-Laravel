@@ -10,6 +10,8 @@ import Question from './components/Question/Question';
 import Choose from './components/Choose/Choose';
 import Load from './components/Load/Load';
 
+import TestsHub from './components/TestsHub/TestsHub';
+
 import * as utils from 'utils/index';
 
 import {
@@ -38,13 +40,14 @@ const withDashboard = ContentComponent => {
 };
 
 const Loading = () => (
-    <div className="flex h-screen items-center">
-        <div className="w-screen text-3xl text-center text-grey">Loading...</div>
+    <div className="loader flex h-screen items-center">
+        <div className="loader__text w-screen text-3xl text-center text-grey">Wczytywanie...</div>
     </div>
 );
 
 const OverviewWithDashboard = withDashboard(Overview);
 const SettingsWithDashboard = withDashboard(SettingsRoutes);
+const TestsHubWithDashboard = withDashboard(TestsHub);
 
 class App extends React.Component {
     constructor(props) {
@@ -195,7 +198,6 @@ class App extends React.Component {
                                         </FormPageLayout>
                                     )}
                                 />
-
                                 <Route
                                     exact
                                     path="/question"
@@ -223,7 +225,6 @@ class App extends React.Component {
                                 <Route path="/load-questions" exact render={ () =>
                                     <Load />
                                 }/>
-
                                 {/* Dashboard routes */}
                                 <Route exact path="/"
                                     render={() => (
@@ -237,6 +238,13 @@ class App extends React.Component {
                                             utils={utils}
                                         />
                                     )}/>
+                                <Route
+                                    exact
+                                    path="/tests"
+                                    render={() => (
+                                        <TestsHubWithDashboard />
+                                    )}
+                                />
                                 <Route path="/settings" component={SettingsWithDashboard} />
                                 {/* 404 route */}
                                 <Route path="*" exact={true} render={() => <NotFound />} />
